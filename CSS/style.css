@@ -1,0 +1,16 @@
+body
+{
+	background-color: black;
+	color: mediumspringgreen;
+	font-family: monospace;
+	font-size: 18px;
+	text-align: center;
+}
+
+h1
+{
+	font-size: 35px;
+	font-weight: lighter;
+	margin: auto;
+	padding: 25px;
+}
