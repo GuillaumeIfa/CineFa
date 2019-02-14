@@ -20,6 +20,22 @@
 			if($db)
 			{
 				echo 'La base de données ' .$db_name. ' à bien été trouvée !<br>';
+
+				$rqt = '
+					INSERT INTO USERS 
+					(
+					pseudo, address, email, phone, password
+					)
+					VALUES 
+					("'.$pseudo.'","'.$address.'","'.$email.'","'.$phone.'","'.$password'")
+				';
+
+				$result_query = mysqli_query($db_handle, $rqt);
+
+				if ($result_query) 
+				{
+					echo '<i>Vous êtes inscrit !</i>';
+				}
 			}
 
 		 ?>

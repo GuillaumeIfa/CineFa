@@ -60,7 +60,7 @@
 	<section>
 		
 		<p>
-			Ou inscrivez vous <a href="incription.php">ICI !</a>
+			Ou inscrivez vous <a href="inscription.php">ICI !</a>
 		</p>
 
 	</section>
