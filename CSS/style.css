@@ -14,3 +14,8 @@ h1
 	margin: auto;
 	padding: 25px;
 }
+
+a:visited
+{
+	color: deeppink;
+}

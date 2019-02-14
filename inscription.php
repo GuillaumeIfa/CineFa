@@ -3,10 +3,10 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="./CSS/style.css">
-	<title>Connection</title>
+	<title>Inscription</title>
 </head>
 <body>
-	<section>
+		<section>
 		<h1>Connection Base De Données</h1>
 		<?php 
 
@@ -25,43 +25,27 @@
 		 ?>
 	</section>
 	<section>
-		<h1>Connection Utilisateur:</h1>
-
-		<form name="form1" action="connection.php" method="POST">
-
+		
+		<h1>Inscription</h1>
+		<p>
+			Veuillez entrer vos informations:
+		</p>
+		<form action="inscription.php" name="form1" method="POST">
 			<label for="pseudo">Pseudo:</label><br>
 			<input type="text" name='pseudo'><br>
+			<label for="address">Adresse:</label><br>
+			<input type="text" name="address"><br>
+			<label for="email">Email</label><br>
+			<input type="mail" name="email"><br>
+			<label for="phone">Téléphone</label><br>
+			<input type="tel" name="phone"><br>
 			<label for="password">Mot De Passe:</label><br>
-			<input type="password" name="password"><br>
+			<input type="password" name="password1"><br>
+			<label for="password">Confirmer Mot De Passe:</label><br>
+			<input type="password" name="password2"><br>
+
 			<input type="submit" name="submit1">
-
 		</form>
-
-		<?php 
-
-			include './functions.php';
-
-			$pseudo = '';
-			$mdp = '';
-
-			if (isset($_POST['submit1'])) 
-			{
-				$pseudo = $_POST['pseudo'];
-				$mdp = $_POST['password'];
-
-				$pseudo = trimmer($pseudo);
-				$mdp = trimmer($mdp);
-
-				echo $pseudo.' '.$mdp;
-			}
-
-		 ?>
-	</section>
-	<section>
-		
-		<p>
-			Ou inscrivez vous <a href="incription.php">ICI !</a>
-		</p>
 
 	</section>
 </body>
