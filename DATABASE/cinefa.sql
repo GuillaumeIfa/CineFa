@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  ven. 15 fév. 2019 à 07:37
+-- Généré le :  ven. 15 fév. 2019 à 13:02
 -- Version du serveur :  5.7.23
 -- Version de PHP :  7.2.10
 
@@ -35,7 +35,7 @@ CREATE TABLE IF NOT EXISTS `actors` (
   `gender` varchar(50) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
   PRIMARY KEY (`id_actor`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=UTF8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `actors`
@@ -57,10 +57,10 @@ CREATE TABLE IF NOT EXISTS `categories` (
   `id_category` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `creation_date` date DEFAULT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_user` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_category`),
   KEY `id_user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `category_content` (
   `id_category` int(11) NOT NULL,
   PRIMARY KEY (`id_movie`,`id_category`),
   KEY `id_category` (`id_category`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `directors` (
   `gender` varchar(50) DEFAULT NULL,
   `date_of_birth` date DEFAULT NULL,
   PRIMARY KEY (`id_director`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=UTF8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `directors`
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `movies` (
   `id_director` int(11) NOT NULL,
   PRIMARY KEY (`id_movie`),
   KEY `id_director` (`id_director`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=UTF8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `movies`
@@ -140,7 +140,7 @@ CREATE TABLE IF NOT EXISTS `movie_notes` (
   `note` int(11) DEFAULT NULL,
   PRIMARY KEY (`id_movie`,`id_user`),
   KEY `id_user` (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -153,10 +153,8 @@ CREATE TABLE IF NOT EXISTS `plays_in` (
   `id_movie` int(11) NOT NULL,
   `id_actor` int(11) NOT NULL,
   PRIMARY KEY (`id_movie`,`id_actor`),
-  FOREIGN KEY (`id_movie`) REFERENCES MOVIES(`id_movie`),
-  FOREIGN KEY (`id_actor`) REFERENCES ACTORS(`id_actor`)
   KEY `id_actor` (`id_actor`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Déchargement des données de la table `plays_in`
@@ -166,9 +164,9 @@ INSERT INTO `plays_in` (`id_movie`, `id_actor`) VALUES
 (1, 1),
 (2, 1),
 (3, 1),
-(3, 3),
+(5, 1),
 (4, 2),
-(5, 1);
+(3, 3);
 
 -- --------------------------------------------------------
 
@@ -185,7 +183,52 @@ CREATE TABLE IF NOT EXISTS `users` (
   `phone` varchar(20) DEFAULT NULL,
   `password` varchar(50) NOT NULL,
   PRIMARY KEY (`id_user`)
-) ENGINE=InnoDB DEFAULT CHARSET=UTF8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `users`
+--
+
+INSERT INTO `users` (`id_user`, `pseudo`, `address`, `email`, `phone`, `password`) VALUES
+(1, 'toto', '', 'toto@yopmail.com', '', '08d2569d06c10b9da10b619df1074c43fae11a8f'),
+(2, 'test', '', 'test@test.com', '', '6887b87a23d0355d72c024997e0ddda4ee70f3e3');
+
+--
+-- Contraintes pour les tables déchargées
+--
+
+--
+-- Contraintes pour la table `categories`
+--
+ALTER TABLE `categories`
+  ADD CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+
+--
+-- Contraintes pour la table `category_content`
+--
+ALTER TABLE `category_content`
+  ADD CONSTRAINT `category_content_ibfk_1` FOREIGN KEY (`id_movie`) REFERENCES `movies` (`id_movie`),
+  ADD CONSTRAINT `category_content_ibfk_2` FOREIGN KEY (`id_category`) REFERENCES `categories` (`id_category`);
+
+--
+-- Contraintes pour la table `movies`
+--
+ALTER TABLE `movies`
+  ADD CONSTRAINT `movies_ibfk_1` FOREIGN KEY (`id_director`) REFERENCES `directors` (`id_director`);
+
+--
+-- Contraintes pour la table `movie_notes`
+--
+ALTER TABLE `movie_notes`
+  ADD CONSTRAINT `movie_notes_ibfk_1` FOREIGN KEY (`id_movie`) REFERENCES `movies` (`id_movie`),
+  ADD CONSTRAINT `movie_notes_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `users` (`id_user`);
+
+--
+-- Contraintes pour la table `plays_in`
+--
+ALTER TABLE `plays_in`
+  ADD CONSTRAINT `plays_in_ibfk_1` FOREIGN KEY (`id_movie`) REFERENCES `movies` (`id_movie`),
+  ADD CONSTRAINT `plays_in_ibfk_2` FOREIGN KEY (`id_actor`) REFERENCES `actors` (`id_actor`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
