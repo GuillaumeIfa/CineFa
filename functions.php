@@ -9,4 +9,7 @@
 		return $x;
 	}
 
+	define('avant', 'caramelmou');      
+	define('apres', 'chocopete');
+
  ?>

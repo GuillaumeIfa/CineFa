@@ -7,52 +7,58 @@
 </head>
 <body>
 	<section>
-		<h1>Connection Base De Données</h1>
-		<?php 
-
-			require_once './configure.php';
-
-			$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
-
-			$db_name = 'cinefa';
-			$db = mysqli_select_db($db_handle, $db_name);
-
-			if($db)
-			{
-				echo 'La base de données ' .$db_name. ' à bien été trouvée !<br>';
-			}
-
-		 ?>
-	</section>
-	<section>
 		<h1>Connection Utilisateur:</h1>
 
 		<form name="form1" action="connection.php" method="POST">
 
 			<label for="pseudo">Pseudo:</label><br>
-			<input type="text" name='pseudo'><br>
+			<input type="text" name='pseudo' required><br>
 			<label for="password">Mot De Passe:</label><br>
-			<input type="password" name="password"><br>
+			<input type="password" name="password" required><br>
 			<input type="submit" name="submit1">
 
 		</form>
 
 		<?php 
 
+			require_once './configure.php';
 			include './functions.php';
 
 			$pseudo = '';
 			$mdp = '';
+			define('avant','caramelmou');
+			define('apres', 'chocopete');
+
+			$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
+			$db_name = 'cinefa';
+			$db = mysqli_select_db($db_handle, $db_name);
 
 			if (isset($_POST['submit1'])) 
 			{
 				$pseudo = $_POST['pseudo'];
-				$mdp = $_POST['password'];
+				$password = sha1(avant.$_POST['password'].apres);
 
-				$pseudo = trimmer($pseudo);
-				$mdp = trimmer($mdp);
+				echo $pseudo.' '.$password;
 
-				echo $pseudo.' '.$mdp;
+				if($db)
+				{
+					// echo '<br>La base de données ' .$db_name. ' à bien été trouvée !<br><br>';
+
+					$rqt_password =
+					'
+					SELECT password FROM USERS 
+					WHERE pseudo = "'.$pseudo.'";
+					';
+
+					$result_query = mysqli_query($db_handle, $rqt_password);
+					$db_field = mysqli_fetch_assoc($result_query);
+
+					if ($db_field['password'] == $password) 
+					{
+						echo 'Bienvenue '.$pseudo.' !';
+					}
+
+				}
 			}
 
 		 ?>
