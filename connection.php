@@ -38,8 +38,6 @@
 				$pseudo = $_POST['pseudo'];
 				$password = sha1(avant.$_POST['password'].apres);
 
-				echo $pseudo.' '.$password;
-
 				if($db)
 				{
 					// echo '<br>La base de données ' .$db_name. ' à bien été trouvée !<br><br>';
@@ -52,15 +50,20 @@
 
 					$result_query = mysqli_query($db_handle, $rqt_password);
 					$db_field = mysqli_fetch_assoc($result_query);
-
-					if ($db_field['password'] == $password) 
+					
+					if ($db_field) 
 					{
-						echo 'Bienvenue '.$pseudo.' !';
+						if ($db_field['password'] == $password) 
+						{
+							echo 'Bienvenue '.$pseudo.' !';
+						}
+						else
+						{
+							echo 'Le mot de passe est erroné ';
+						}
 					}
-
 				}
 			}
-
 		 ?>
 	</section>
 	<section>
