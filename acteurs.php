@@ -3,12 +3,12 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./CSS/style.css">
-	<title>Réalisateurs</title>
+	<title>Acteurs</title>
 </head>
 <body>
 	<?php 
 
-		echo '<h1>Réalisateurs</h1>';
+		echo '<h1>Acteurs</h1>';
 
 		require_once './configure.php';
 		include './functions.php';
@@ -19,18 +19,18 @@
 
 		if($db)
 		{
-			$rqt_directors = 
+			$rqt_actors = 
 			'
 			SELECT * 
-			FROM directors;
+			FROM actors;
 			';
 
-			$result_query = mysqli_query($db_handle, $rqt_directors);
+			$result_query = mysqli_query($db_handle, $rqt_actors);
 			// $db_field = mysqli_fetch_assoc($result_query);
 
 			while ($db_field = mysqli_fetch_assoc($result_query)) 
 			{
-				echo '<a href="./DIRECTORS/'.str_replace(' ', '_', $db_field['name']).'.php">'.ucwords($db_field['name']).'</a><br>';
+				echo '<a href="./ACTORS/'.str_replace(' ', '_', $db_field['name']).'.php">'.ucwords($db_field['name']).'</a><br>';
 			}
 					
 		}
