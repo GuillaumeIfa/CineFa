@@ -42,7 +42,7 @@
 			echo '<p>Date de sortie<br>';
 			echo $db_field_movies['release_date'].'</p><br>';
 			echo '<p>Réalisateur:<br>';
-			echo '<a href="fiche_realisateur.php?id='.$db_field_movies["id_movie"].'&name='.$db_field_movies["name"].'">'.ucwords($db_field_movies["name"]).'</a><br>';
+			echo '<a href="fiche_realisateur.php?id='.$db_field_movies["id_director"].'&name='.$db_field_movies["name"].'">'.ucwords($db_field_movies["name"]).'</a><br>';
 
 			$result_query_actors = mysqli_query($db_handle, $rqt_actors);
 
