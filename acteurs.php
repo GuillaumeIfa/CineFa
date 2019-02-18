@@ -26,15 +26,18 @@
 			';
 
 			$result_query = mysqli_query($db_handle, $rqt_actors);
-			// $db_field = mysqli_fetch_assoc($result_query);
 
 			while ($db_field = mysqli_fetch_assoc($result_query)) 
 			{
-				echo '<a href="./ACTORS/'.str_replace(' ', '_', $db_field['name']).'.php">'.ucwords($db_field['name']).'</a><br>';
-			}
-					
+				echo '<a href="fiche_acteur.php?id='.$db_field['id_actor'].'&name='.$db_field['name'].'">'.ucwords($db_field['name']).'</a><br>';
+			}		
 		}
 
 	 ?>
+	 <form ACTION="search.php" METHOD="POST">
+		Recherche: <input TYPE="text" NAME="name">
+		<br><br>
+		<input TYPE="submit" VALUE="Rechercher">
+	</form>
 </body>
 </html>

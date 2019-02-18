@@ -29,7 +29,7 @@
 
 			while ($db_field = mysqli_fetch_assoc($result_query)) 
 			{
-				echo '<a href="./MOVIES/'.str_replace(' ', '_', $db_field['title']).'.php">'.ucwords($db_field['title']).'</a><br>';
+				echo '<a href="fiche_film.php?id='.$db_field['id_movie'].'&name='.$db_field['title'].'">'.ucwords($db_field['title']).'</a><br>';
 			}
 					
 		}

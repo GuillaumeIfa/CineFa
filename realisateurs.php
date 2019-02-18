@@ -26,11 +26,10 @@
 			';
 
 			$result_query = mysqli_query($db_handle, $rqt_directors);
-			// $db_field = mysqli_fetch_assoc($result_query);
 
 			while ($db_field = mysqli_fetch_assoc($result_query)) 
 			{
-				echo '<a href="./DIRECTORS/'.str_replace(' ', '_', $db_field['name']).'.php">'.ucwords($db_field['name']).'</a><br>';
+				echo '<a href="fiche_realisateur.php?id='.$db_field['id_director'].'&name='.$db_field['name'].'">'.ucwords($db_field['name']).'</a><br>';
 			}
 					
 		}

@@ -2,14 +2,14 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="../CSS/style.css">
-	<title>Aliens</title>
+	<link rel="stylesheet" href="./CSS/style.css">
+	<title><?php echo ucwords($_GET["name"])?></title>
 </head>
 <body>
-	<h1>Aliens</h1>
+	<h1><?php echo ucwords($_GET["name"])?></h1>
 	<?php 
 
-		require_once '../configure.php';
+		require_once './configure.php';
 
 		$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
 		$db_name = 'cinefa';
@@ -23,16 +23,16 @@
 			SELECT *
 			FROM movies
 			INNER JOIN directors ON directors.id_director = movies.id_director
-			WHERE movies.id_movie = '.$_GET["id_movie"].';
+			WHERE movies.id_movie = "'.$_GET["id"].'";
 			';
 
 			$rqt_actors = 
 			'
-			SELECT actors.name
+			SELECT actors.name, actors.id_actor
             FROM actors
             INNER JOIN plays_in ON plays_in.id_actor = actors.id_actor
             INNER JOIN movies ON movies.id_movie = plays_in.id_movie
-            WHERE movies.title = '.$_GET["id_movie"].';
+            WHERE movies.id_movie = '.$_GET["id"].';
             ';
 
 			$result_query_movies = mysqli_query($db_handle, $rqt_movies);
@@ -42,7 +42,7 @@
 			echo '<p>Date de sortie<br>';
 			echo $db_field_movies['release_date'].'</p><br>';
 			echo '<p>Réalisateur:<br>';
-			echo '<a href="../DIRECTORS/'.str_replace(' ', '_', $db_field_movies['name']).'.php">'.ucwords($db_field_movies['name']).'</a><br>';
+			echo '<a href="fiche_realisateur.php?id='.$db_field_movies["id_movie"].'&name='.$db_field_movies["name"].'">'.ucwords($db_field_movies["name"]).'</a><br>';
 
 			$result_query_actors = mysqli_query($db_handle, $rqt_actors);
 
@@ -50,7 +50,7 @@
 
 			while ($db_field_actors = mysqli_fetch_assoc($result_query_actors)) 
 			{
-				echo '<div><a href="../ACTORS/'.str_replace(' ', '_', $db_field_actors['name']).'.php">'.ucwords($db_field_actors['name']).'</a></div><br>';
+				echo '<a href="fiche_acteur.php?id='.$db_field_actors["id_actor"].'&name='.$db_field_actors["name"].'">'.ucwords($db_field_actors["name"]).'</a><br>';
 			}
 
 
