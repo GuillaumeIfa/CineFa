@@ -19,11 +19,27 @@
 
 		if($db)
 		{
-			$rqt_actors = 
-			'
-			SELECT * 
-			FROM actors;
-			';
+			$name ='';
+
+			if (isset($_POST['submit']))
+			{
+				$name = $_POST['name'];
+
+				$rqt_actors =
+				'
+				SELECT *
+				FROM actors
+				WHERE name LIKE "%'.$name.'%";
+				';
+			}
+			else
+			{
+				$rqt_actors = 
+				'
+				SELECT * 
+				FROM actors;
+				';
+			}
 
 			$result_query = mysqli_query($db_handle, $rqt_actors);
 
@@ -32,12 +48,15 @@
 				echo '<a href="fiche_acteur.php?id='.$db_field['id_actor'].'&name='.$db_field['name'].'">'.ucwords($db_field['name']).'</a><br>';
 			}		
 		}
-
+		echo "<br>";
 	 ?>
-	 <form ACTION="search.php" METHOD="POST">
-		Recherche: <input TYPE="text" NAME="name">
+	 <form action="./acteurs.php" method="POST">
+
+		Recherche:
+		<input type="text" name="name">
 		<br><br>
-		<input TYPE="submit" VALUE="Rechercher">
+		<input type="submit" name="submit" value="Rechercher">
+
 	</form>
 </body>
 </html>
