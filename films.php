@@ -19,11 +19,26 @@
 
 		if($db)
 		{
-			$rqt_movies = 
-			'
-			SELECT * 
-			FROM movies;
-			';
+			if (isset($_POST['submit']))
+			{
+				$title = $_POST['title'];
+
+				$rqt_movies =
+				'
+				SELECT *
+				FROM movies
+				WHERE title LIKE "%'.$title.'%";
+				';
+			}
+			else
+			{
+				$rqt_movies = 
+				'
+				SELECT * 
+				FROM movies;
+				';
+			}
+
 
 			$result_query = mysqli_query($db_handle, $rqt_movies);
 
@@ -33,7 +48,15 @@
 			}
 					
 		}
-
+		echo '<br>';
 	 ?>
+	<form action="./films.php" method="POST">
+
+		Recherche:
+		<input type="text" name="title">
+		<br><br>
+		<input type="submit" name="submit" value="Rechercher">
+
+	</form
 </body>
 </html>
