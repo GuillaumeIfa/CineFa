@@ -52,12 +52,11 @@
 			{
 				echo '<a href="fiche_acteur.php?id='.$db_field_actors["id_actor"].'&name='.$db_field_actors["name"].'">'.ucwords($db_field_actors["name"]).'</a><br>';
 			}
-
-
-
-
 		}
-
 	 ?>
+	 <h2>Noter Le film:</h2>
+	 <form action="./fiche_film.php" method="POST">
+	 	
+	 </form>
 </body>
 </html>

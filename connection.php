@@ -26,8 +26,8 @@
 
 			$pseudo = '';
 			$mdp = '';
-			define('avant','caramelmou');
-			define('apres', 'chocopete');
+/*			define('avant','caramelmou');
+			define('apres', 'chocopete');*/
 
 			$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
 			$db_name = 'cinefa';
@@ -56,11 +56,18 @@
 						if ($db_field['password'] == $password) 
 						{
 							echo 'Bienvenue '.$pseudo.' !';
+							session_start();
+							$_SESSION['pseudo'] = $_POST['pseudo'];
+							$_SESSION['password'] = $_POST['password'];
 						}
 						else
 						{
 							echo 'Le mot de passe est erroné ';
 						}
+					}
+					else
+					{
+						echo "Le pseudo n'existe pas...";
 					}
 				}
 			}
@@ -73,5 +80,11 @@
 		</p>
 
 	</section>
+	<?php 
+		if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
+		{
+			echo 'ça marche !';
+		}
+	 ?>
 </body>
 </html>

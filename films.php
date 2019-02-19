@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -57,6 +58,12 @@
 		<br><br>
 		<input type="submit" name="submit" value="Rechercher">
 
-	</form
+	</form>
+		<?php 
+		if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
+		{
+			echo 'ça marche ! '.$_SESSION['pseudo']. ' !';
+		}
+	 ?>
 </body>
 </html>

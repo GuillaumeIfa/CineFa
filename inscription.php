@@ -47,7 +47,7 @@
 			{
 				if ($_POST['password1'] != $_POST['password2'])
 				{
-					echo "Les mots de passe ne correspondent pas ¯\_(ツ)_/¯<br>";
+					echo "Les mots de passe ne correspondent pas 😬<br>";
 				}
 				else
 				{
@@ -57,8 +57,8 @@
 					$address = $_POST['address'];
 					$email = $_POST['email'];
 					$phone = $_POST['phone'];
-					define('avant', 'caramelmou');      // Definition Variable de Sécurité
-					define('apres', 'chocopete');		// Definition Variable de Sécurité
+/*					define('avant', 'caramelmou');      // Definition Variable de Sécurité
+					define('apres', 'chocopete');*/		// Definition Variable de Sécurité
 
 					$password = sha1(avant.$_POST['password1'].apres);   // Hashage du MDP
 
@@ -74,7 +74,7 @@
 
 						if ($db_field)
 						{
-							echo '<b>Ce pseudo existe déjà !</b>';
+							echo '<b>Ce pseudo existe déjà !</b><br><span>¯\_(ツ)_/¯</span>';
 						}
 						else
 						{
@@ -92,7 +92,7 @@
 
 							if ($result_query) 
 							{
-								echo '<i>Vous êtes inscrit !</i>';
+								echo '<i>Vous êtes inscrit !</i>👌';
 							}
 						}
 					}
