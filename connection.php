@@ -56,7 +56,7 @@
 						if ($db_field['password'] == $password) 
 						{
 							echo 'Bienvenue '.$pseudo.' !';
-							session_start();
+							// session_start();
 							$_SESSION['pseudo'] = $_POST['pseudo'];
 							$_SESSION['password'] = $_POST['password'];
 						}
@@ -83,7 +83,8 @@
 	<?php 
 		if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
 		{
-			echo 'ça marche !';
+			echo 'ça marche !<br>';
+			echo $_SESSION['pseudo'];
 		}
 	 ?>
 </body>

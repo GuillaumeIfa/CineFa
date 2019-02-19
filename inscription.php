@@ -92,7 +92,8 @@
 
 							if ($result_query) 
 							{
-								echo '<i>Vous êtes inscrit !</i>👌';
+								echo '<i>Félicitations ! Vous êtes inscrit !</i>👌<br>';
+								echo 'Connectez vous <a href="./connection.php" >ici</a>';
 							}
 						}
 					}

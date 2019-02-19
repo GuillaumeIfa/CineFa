@@ -16,6 +16,14 @@ h1
 	padding: 25px;
 }
 
+h2
+{
+	font-size: 25px;
+	font-weight: lighter;
+	margin: auto;
+	padding: 25px;
+}
+
 a:visited
 {
 	color: deeppink;

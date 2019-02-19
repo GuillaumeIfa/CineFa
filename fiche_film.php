@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -56,7 +57,13 @@
 	 ?>
 	 <h2>Noter Le film:</h2>
 	 <form action="./fiche_film.php" method="POST">
-	 	
+	 	<input type="radio" name="note" value="5">5<br>
+	 	<input type="radio" name="note" value="4">4<br>
+	 	<input type="radio" name="note" value="3">3<br>
+	 	<input type="radio" name="note" value="2">2<br>
+	 	<input type="radio" name="note" value="1">1<br>
+	 	<input type="radio" name="note" value="0">0<br><br>
+	 	<input type="submit" name="submit_note">
 	 </form>
 </body>
 </html>
