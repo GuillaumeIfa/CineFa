@@ -19,7 +19,7 @@
 	<div>
 		<a href="./connection.php"><button>Connection</button></a>
 		<a href="./inscription.php"><button>Inscription</button></a>
-
+		<a href="./quit.php"><button>Deconnection</button></a>
 	</div>
 	<?php
 		if (isset($_SESSION['pseudo'])) 

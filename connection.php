@@ -34,7 +34,6 @@
 			{
 				if ($db_field['password'] == $password) 
 				{
-					echo 'Bienvenue '.$pseudo.' !';
 					session_start();
 					$_SESSION['pseudo'] = $_POST['pseudo'];
 					$_SESSION['password'] = $_POST['password'];
@@ -43,12 +42,12 @@
 				}
 				else
 				{
-					echo 'Le mot de passe est erroné ';
+					echo 'Le mot de passe est erroné>';
 				}
 			}
 			else
 			{
-				echo "Le pseudo n'existe pas...";
+				echo 'Le pseudo n\'existe pas...';
 			}
 		}
 	}
@@ -64,7 +63,7 @@
 	<section>
 		<h1>Connection Utilisateur:</h1>
 
-		<form name="form1" action="connection.php" method="POST">
+		<form name="form1" action="" method="POST">
 
 			<label for="pseudo">Pseudo:</label><br>
 			<input type="text" name='pseudo' required><br>

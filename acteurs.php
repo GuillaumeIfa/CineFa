@@ -6,9 +6,17 @@
 	<title>Acteurs</title>
 </head>
 <body>
-	<?php 
+	<h1>Acteurs</h1>
+	 <form action="./acteurs.php" method="POST">
 
-		echo '<h1>Acteurs</h1>';
+		Recherche:
+		<input type="text" name="name">
+		<br><br>
+		<input type="submit" name="submit" value="Rechercher">
+
+	</form>
+	<br><span>Liste des acteurs:</span><br>
+	<?php 
 
 		require_once './configure.php';
 		include './functions.php';
@@ -45,19 +53,11 @@
 
 			while ($db_field = mysqli_fetch_assoc($result_query)) 
 			{
-				echo '<a href="fiche_acteur.php?id='.$db_field['id_actor'].'&name='.$db_field['name'].'">'.ucwords($db_field['name']).'</a><br>';
+				echo '<br><a href="fiche_acteur.php?id='.$db_field['id_actor'].'&name='.$db_field['name'].'">'.ucwords($db_field['name']).'</a>';
 			}		
 		}
 		echo "<br>";
 	 ?>
-	 <form action="./acteurs.php" method="POST">
-
-		Recherche:
-		<input type="text" name="name">
-		<br><br>
-		<input type="submit" name="submit" value="Rechercher">
-
-	</form>
 	<?php echo '<br><a href="./index.tmp.php">Retour</a>'; ?>
 </body>
 </html>

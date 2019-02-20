@@ -7,9 +7,17 @@
 	<title>Films</title>
 </head>
 <body>
-	<?php 
+	<h1>Films</h1>
+	<form action="./films.php" method="POST">
 
-		echo '<h1>Films</h1>';
+		Recherche par titre:<br>
+		<input type="text" name="title">
+		<br>
+		<input type="submit" name="submit" value="Rechercher">
+
+	</form>
+	<br><span>Liste des films:</span><br>
+	<?php
 
 		require_once './configure.php';
 		include './functions.php';
@@ -45,27 +53,16 @@
 
 			while ($db_field = mysqli_fetch_assoc($result_query)) 
 			{
-				echo '<a href="fiche_film.php?id='.$db_field['id_movie'].'&name='.$db_field['title'].'">'.ucwords($db_field['title']).'</a><br>';
+				echo '<br><a href="fiche_film.php?id='.$db_field['id_movie'].'&name='.$db_field['title'].'">'.ucwords($db_field['title']).'</a>';
 			}
-					
 		}
 		echo '<br>';
+		echo '<br><a href="./index.tmp.php">Retour</a><br>';
+
+		if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
+		{
+			echo '<br><h2>Bonjour '.$_SESSION['pseudo']. ' !</h2><br>';
+		}
 	 ?>
-	<form action="./films.php" method="POST">
-
-		Recherche:
-		<input type="text" name="title">
-		<br><br>
-		<input type="submit" name="submit" value="Rechercher">
-
-	</form>
-		<?php 
-			if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
-			{
-				echo 'Bonjour '.$_SESSION['pseudo']. ' !';
-			}
-
-			echo '<br><a href="./index.tmp.php">Retour</a>';
-	 	?>
 </body>
 </html>

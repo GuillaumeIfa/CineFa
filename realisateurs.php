@@ -1,3 +1,4 @@
+<?php session_start() ?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -6,9 +7,17 @@
 	<title>Réalisateurs</title>
 </head>
 <body>
-	<?php 
+	<h1>Réalisateurs</h1>
+	  <form action="./realisateurs.php" method="POST">
 
-		echo '<h1>Réalisateurs</h1>';
+	 	Recherche par nom:<br>
+	 	<input type="text" name="name">
+	 	<br>
+	 	<input type="submit" name="submit" value="Rechercher">
+
+	 </form>
+	 <br><span>Liste des réalisateurs:</span><br>
+	<?php
 
 		require_once './configure.php';
 		include './functions.php';
@@ -44,19 +53,16 @@
 
 			while ($db_field = mysqli_fetch_assoc($result_query)) 
 			{
-				echo '<a href="fiche_realisateur.php?id='.$db_field['id_director'].'&name='.$db_field['name'].'">'.ucwords($db_field['name']).'</a><br>';
-			}		
+				echo '<br><a href="fiche_realisateur.php?id='.$db_field['id_director'].'&name='.$db_field['name'].'">'.ucwords($db_field['name']).'</a>';
+			}
 		}
 		echo '<br>';
+		echo '<br><a href="./index.tmp.php">Retour</a><br>';
+
+		if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
+		{
+			echo '<br><h2>Bonjour '.$_SESSION['pseudo']. ' !</h2><br>';
+		}
 	 ?>
-	  <form action="./realisateurs.php" method="POST">
-
-	 	Recherche:
-	 	<input type="text" name="name">
-	 	<br><br>
-	 	<input type="submit" name="submit" value="Rechercher">
-
-	 </form>
-	 <?php echo '<br><a href="./index.tmp.php">Retour</a>'; ?> 
 </body>
 </html>
