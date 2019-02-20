@@ -62,7 +62,7 @@
 		<?php 
 		if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
 		{
-			echo 'ça marche ! '.$_SESSION['pseudo']. ' !';
+			echo 'Bonjour '.$_SESSION['pseudo']. ' !';
 		}
 	 ?>
 </body>

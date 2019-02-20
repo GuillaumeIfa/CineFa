@@ -80,7 +80,7 @@
 						{
 							$rqt = 
 							'
-								INSERT INTO USERS 
+								INSERT INTO users 
 								(
 								pseudo, address, email, phone, password
 								)

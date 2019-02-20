@@ -55,8 +55,16 @@
 			}
 		}
 	 ?>
-	 <h2>Noter Le film:</h2>
-	 <form action="./fiche_film.php" method="POST">
+	 <h2>Notez Le film:</h2>
+
+<!-- 	 <?php 
+/*	 	if (isset($_SESSION['pseudo'])) 
+	{
+		echo $_SESSION['pseudo'];
+	}*/
+?> -->
+
+	 <form action="" method="POST">
 	 	<input type="radio" name="note" value="5">5<br>
 	 	<input type="radio" name="note" value="4">4<br>
 	 	<input type="radio" name="note" value="3">3<br>
@@ -65,5 +73,44 @@
 	 	<input type="radio" name="note" value="0">0<br><br>
 	 	<input type="submit" name="submit_note">
 	 </form>
+
+	 <?php 
+
+	 	if (isset($_POST['submit_note'])) 
+	 	{
+	 		if (!isset($_SESSION['pseudo'])) 
+	 		{
+	 			echo '<br><b>Veuillez vous connecter</b>';
+	 		}
+	 		else
+	 		{
+	 			if ($db) 
+	 			{
+	 				$note = $_POST['note'];
+	 				$id_movie = $_GET['id'];
+	 				$id_user = $_SESSION['id_user'];
+
+	 				$rqt_note = 
+	 				'
+					INSERT INTO movie_notes
+					(
+					id_movie, id_user, note
+					)
+					VALUES
+					(
+					"'.$id_movie.'","'.$id_user.'","'.$note.'"
+					);
+	 				';
+
+	 				$result_query_note = mysqli_query($db_handle, $rqt_note);
+
+	 				if ($result_query_note) 
+	 				{
+	 					echo 'Vous avez noté le flim !';
+	 				}
+	 			}
+	 		}
+	 	}
+	  ?>
 </body>
 </html>
