@@ -60,10 +60,12 @@
 
 	</form>
 		<?php 
-		if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
-		{
-			echo 'Bonjour '.$_SESSION['pseudo']. ' !';
-		}
-	 ?>
+			if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
+			{
+				echo 'Bonjour '.$_SESSION['pseudo']. ' !';
+			}
+
+			echo '<br><a href="./index.tmp.php">Retour</a>';
+	 	?>
 </body>
 </html>

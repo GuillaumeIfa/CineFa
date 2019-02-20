@@ -80,7 +80,7 @@
 	 	{
 	 		if (!isset($_SESSION['pseudo'])) 
 	 		{
-	 			echo '<br><b>Veuillez vous connecter</b>';
+	 			echo '<br><b>Veuillez vous connecter </b><a href="./connection.php">ICI</a>';
 	 		}
 	 		else
 	 		{
@@ -111,6 +111,7 @@
 	 			}
 	 		}
 	 	}
+	 	echo '<br><a href="./index.tmp.php">Retour</a>';
 	  ?>
 </body>
 </html>

@@ -52,6 +52,7 @@
 			}
 		}
 
+		echo '<br><a href="./index.tmp.php">Retour</a>';
 	 ?>
 </body>
 </html>

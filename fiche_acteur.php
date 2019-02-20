@@ -51,10 +51,9 @@
 			{
 				echo '<a href="fiche_film.php?id='.$db_field_movies["id_movie"].'&name='.$db_field_movies["title"].'">'.ucwords($db_field_movies["title"]).'</a><br>';
 			}
-
-
 		}
 
+		echo '<br><a href="./index.tmp.php">Retour</a>';
 	 ?>
 </body>
 </html>

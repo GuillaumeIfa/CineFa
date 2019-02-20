@@ -56,6 +56,7 @@
 	 	<br><br>
 	 	<input type="submit" name="submit" value="Rechercher">
 
-	 </form>	 
+	 </form>
+	 <?php echo '<br><a href="./index.tmp.php">Retour</a>'; ?> 
 </body>
 </html>
