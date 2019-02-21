@@ -3,14 +3,14 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="./CSS/style.css">
+	<link rel="stylesheet" href="./SCRIPT/style.css">
 	<title><?php echo ucwords($_GET["name"])?></title>
 </head>
 <body>
 	<h1><?php echo ucwords($_GET["name"])?></h1>
 	<?php 
 
-		require_once './configure.php';
+		require_once './SCRIPT/configure.php';
 
 		$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
 		$db_name = 'cinefa';
@@ -40,29 +40,42 @@
 			$db_field_movies = mysqli_fetch_assoc($result_query_movies);
 
 			echo '<h3>Informations:</h3>';
-			echo '<p>Date de sortie<br>';
-			echo $db_field_movies['release_date'].'</p><br>';
+			echo '<p>Date de sortie:<br>';
+			echo $db_field_movies['release_date'].'</p>';
 			echo '<p>Réalisateur:<br>';
-			echo '<a href="fiche_realisateur.php?id='.$db_field_movies["id_director"].'&name='.$db_field_movies["name"].'">'.ucwords($db_field_movies["name"]).'</a><br>';
+			echo '<a href="fiche_realisateur.php?id='.$db_field_movies["id_director"].'&name='.$db_field_movies["name"].'">'.ucwords($db_field_movies["name"]).'</a></p>';
 
 			$result_query_actors = mysqli_query($db_handle, $rqt_actors);
 
-			echo '<p>Acteurs:</p><br>';
+			echo 'Acteurs:<br>';
 
 			while ($db_field_actors = mysqli_fetch_assoc($result_query_actors)) 
 			{
 				echo '<a href="fiche_acteur.php?id='.$db_field_actors["id_actor"].'&name='.$db_field_actors["name"].'">'.ucwords($db_field_actors["name"]).'</a><br>';
 			}
+
+			if (isset($_SESSION['pseudo']))
+			{
+				$rqt_note = 
+				'
+				SELECT note
+				FROM movie_notes
+				INNER JOIN movies ON movies.id_movie = movie_notes.id_movie
+				INNER JOIN users ON users.id_user = movie_notes.id_user
+				WHERE movie_notes.id_movie = '.$_GET["id"].' && movie_notes.id_user = '.$_SESSION["id_user"].';
+				';
+
+				$result_query_note = mysqli_query($db_handle, $rqt_note);
+				$db_field_note = mysqli_fetch_assoc($result_query_note);
+
+				if ($db_field_note) 
+				{
+					echo '<br>Votre note: <b>'.$db_field_note["note"].'</b><br>';
+				}
+			}
 		}
 	 ?>
 	 <h2>Notez Le film:</h2>
-
-<!-- 	 <?php 
-/*	 	if (isset($_SESSION['pseudo'])) 
-	{
-		echo $_SESSION['pseudo'];
-	}*/
-?> -->
 
 	 <form action="" method="POST">
 	 	<input type="radio" name="note" value="5">5<br>
@@ -80,7 +93,11 @@
 	 	{
 	 		if (!isset($_SESSION['pseudo'])) 
 	 		{
-	 			echo '<br><b>Veuillez vous connecter </b><a href="./connection.php">ICI</a>';
+	 			echo '<br><b>Veuillez vous connecter </b><a href="./connection.php">ICI</a><br>';
+	 		}
+	 		elseif (isset($db_field_note['note'])) 
+	 		{
+	 			echo '<br><b>Vous avez déjà noté ce film...</b><br>';
 	 		}
 	 		else
 	 		{
@@ -106,7 +123,7 @@
 
 	 				if ($result_query_note) 
 	 				{
-	 					echo 'Vous avez noté le flim !';
+	 					echo 'Vous avez donné '.$_POST['note'].' à ce flim '.$_SESSION['pseudo'].' !';
 	 				}
 	 			}
 	 		}

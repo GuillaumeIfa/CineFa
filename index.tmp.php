@@ -5,7 +5,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="./CSS/style.css">
+	<link rel="stylesheet" href="./SCRIPT/style.css">
 	<title>cIneFA</title>
 </head>
 <body>
@@ -19,7 +19,7 @@
 	<div>
 		<a href="./connection.php"><button>Connection</button></a>
 		<a href="./inscription.php"><button>Inscription</button></a>
-		<a href="./quit.php"><button>Deconnection</button></a>
+		<a href="./SCRIPT/quit.php"><button>Deconnection</button></a>
 	</div>
 	<?php
 		if (isset($_SESSION['pseudo'])) 

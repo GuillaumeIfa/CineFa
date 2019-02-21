@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="./CSS/style.css">
+	<link rel="stylesheet" type="text/css" href="./SCRIPT/style.css">
 	<title>Réalisateurs</title>
 </head>
 <body>
@@ -19,8 +19,8 @@
 	 <br><span>Liste des réalisateurs:</span><br>
 	<?php
 
-		require_once './configure.php';
-		include './functions.php';
+		require_once './SCRIPT/configure.php';
+		include './SCRIPT/functions.php';
 
 		$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
 		$db_name ='cinefa';

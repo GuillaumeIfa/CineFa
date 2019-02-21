@@ -2,24 +2,24 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="./CSS/style.css">
+	<link rel="stylesheet" type="text/css" href="./SCRIPT/style.css">
 	<title>Acteurs</title>
 </head>
 <body>
 	<h1>Acteurs</h1>
 	 <form action="./acteurs.php" method="POST">
 
-		Recherche:
+		Recherche:<br>
 		<input type="text" name="name">
-		<br><br>
+		<br>
 		<input type="submit" name="submit" value="Rechercher">
 
 	</form>
-	<br><span>Liste des acteurs:</span><br>
+	<br><span>Liste des acteurs:</span>
 	<?php 
 
-		require_once './configure.php';
-		include './functions.php';
+		require_once './SCRIPT/configure.php';
+		include './SCRIPT/functions.php';
 
 		$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
 		$db_name ='cinefa';

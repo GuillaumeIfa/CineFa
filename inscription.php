@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="./CSS/style.css">
+	<link rel="stylesheet" href="./SCRIPT/style.css">
 	<title>Inscription</title>
 </head>
 <body>
@@ -12,6 +12,7 @@
 			Veuillez entrer vos informations:
 		</p>
 		<form action="inscription.php" name="form1" method="POST">
+
 			<label for="pseudo">Pseudo:</label><br>
 			<input type="text" name='pseudo' required><br>
 			<label for="address">Adresse:</label><br>
@@ -26,6 +27,7 @@
 			<input type="password" name="password2" required><br>
 
 			<input type="submit" name="submit1">
+			
 		</form>
 	</section>
 
@@ -33,8 +35,8 @@
 
 		<?php 
 
-			require_once './configure.php';
-			include 'functions.php';
+			require_once './SCRIPT/configure.php';
+			include './SCRIPT/functions.php';
 
 			$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
 
@@ -52,21 +54,16 @@
 				else
 				{
 
-
 					$pseudo = trimmer($_POST['pseudo']);
 					$address = $_POST['address'];
 					$email = $_POST['email'];
 					$phone = $_POST['phone'];
-/*					define('avant', 'caramelmou');      // Definition Variable de Sécurité
-					define('apres', 'chocopete');*/		// Definition Variable de Sécurité
 
 					$password = sha1(avant.$_POST['password1'].apres);   // Hashage du MDP
 
 				
 					if($db)
 					{
-						/*echo 'La base de données ' .$db_name. ' à bien été trouvée !<br>';*/
-
 
 						$rqt_pseudo = 'SELECT * FROM USERS WHERE pseudo = "' .$pseudo. '";';
 						$result_query = mysqli_query($db_handle, $rqt_pseudo);   // Ouvre la requete

@@ -3,7 +3,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="./CSS/style.css">
+	<link rel="stylesheet" type="text/css" href="./SCRIPT/style.css">
 	<title>Films</title>
 </head>
 <body>
@@ -16,11 +16,16 @@
 		<input type="submit" name="submit" value="Rechercher">
 
 	</form>
-	<br><span>Liste des films:</span><br>
+	<br><span>Liste des films:</span>
+	<form action="./films.php" method="POST">
+
+		<input type="submit" name="submit_note" value="Afficher uniquement les films que vous avez notés">
+
+	</form>
 	<?php
 
-		require_once './configure.php';
-		include './functions.php';
+		require_once './SCRIPT/configure.php';
+		include './SCRIPT/functions.php';
 
 		$db_handle = mysqli_connect(DB_SERVER, DB_USER, DB_PASS);
 		$db_name ='cinefa';
@@ -39,6 +44,29 @@
 				WHERE title LIKE "%'.$title.'%";
 				';
 			}
+			elseif (isset($_POST['submit_note'])) 
+			{
+				if (isset($_SESSION['id_user'])) 
+				{
+					$rqt_movies =
+					'
+					SELECT * 
+					FROM movies				
+					INNER JOIN movie_notes ON movie_notes.id_movie = movies.id_movie
+					INNER JOIN users ON users.id_user = movie_notes.id_user
+					WHERE users.id_user = '.$_SESSION['id_user'].';
+					';
+				}
+				else
+				{
+					echo '<b>Vous n\'êtes pas connecté(e)...</b>';
+					$rqt_movies = 
+					'
+					SELECT * 
+					FROM movies;
+					';
+				}
+			}
 			else
 			{
 				$rqt_movies = 
@@ -47,7 +75,6 @@
 				FROM movies;
 				';
 			}
-
 
 			$result_query = mysqli_query($db_handle, $rqt_movies);
 

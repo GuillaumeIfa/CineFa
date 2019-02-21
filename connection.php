@@ -1,7 +1,7 @@
 <?php 
 
-	require_once './configure.php';
-	include './functions.php';
+	require_once './SCRIPT/configure.php';
+	include './SCRIPT/functions.php';
 
 	$pseudo = '';
 	$mdp = '';
@@ -42,12 +42,12 @@
 				}
 				else
 				{
-					echo 'Le mot de passe est erroné>';
+					echo '<b>Le mot de passe est erroné</b>';
 				}
 			}
 			else
 			{
-				echo 'Le pseudo n\'existe pas...';
+				echo '<b>Le pseudo n\'existe pas...</b>';
 			}
 		}
 	}
@@ -56,7 +56,7 @@
 <html lang="fr">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="./CSS/style.css">
+	<link rel="stylesheet" href="./SCRIPT/style.css">
 	<title>Connection</title>
 </head>
 <body>
