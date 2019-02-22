@@ -59,10 +59,10 @@
 		echo '<br>';
 		echo '<br><a href="./index.tmp.php">Retour</a><br>';
 
-		if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
-		{
-			echo '<br><h2>Bonjour '.$_SESSION['pseudo']. ' !</h2><br>';
-		}
+		// if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
+		// {
+		// 	echo '<br><h2>Bonjour '.$_SESSION['pseudo']. ' !</h2><br>';
+		// }
 	 ?>
 </body>
 </html>

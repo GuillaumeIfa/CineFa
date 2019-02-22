@@ -36,6 +36,12 @@
             WHERE movies.id_movie = '.$_GET["id"].';
             ';
 
+            $rqt_avg = 
+            '
+            SELECT round(AVG(note),1) AS note
+            FROM movie_notes
+            ';
+
 			$result_query_movies = mysqli_query($db_handle, $rqt_movies);
 			$db_field_movies = mysqli_fetch_assoc($result_query_movies);
 
@@ -70,21 +76,30 @@
 
 				if ($db_field_note) 
 				{
-					echo '<br>Votre note: <b>'.$db_field_note["note"].'</b><br>';
+					echo '<h3>Votre note: '.$db_field_note["note"].'</h3>';
 				}
 			}
+
+			$result_query_avg = mysqli_query($db_handle, $rqt_avg);
+			$db_field_avg = mysqli_fetch_assoc($result_query_avg);
+
+			echo '<p>Note moyenne: ';
+			echo $db_field_avg['note'].'</p>';
 		}
 	 ?>
 	 <h2>Notez Le film:</h2>
 
 	 <form action="" method="POST">
-	 	<input type="radio" name="note" value="5">5<br>
-	 	<input type="radio" name="note" value="4">4<br>
-	 	<input type="radio" name="note" value="3">3<br>
-	 	<input type="radio" name="note" value="2">2<br>
-	 	<input type="radio" name="note" value="1">1<br>
-	 	<input type="radio" name="note" value="0">0<br><br>
-	 	<input type="submit" name="submit_note">
+	 	<select name="note">
+	 		<option>📼</option>
+		 	<option value="0">0</option>
+		 	<option value="1">1</option>
+		 	<option value="2">2</option>
+		 	<option value="3">3</option>
+		 	<option value="4">4</option>
+		 	<option value="5">5</option>
+	 	</select>
+	 	<input type="submit" name="submit_note" value="Noter">
 	 </form>
 
 	 <?php 
@@ -97,7 +112,26 @@
 	 		}
 	 		elseif (isset($db_field_note['note'])) 
 	 		{
-	 			echo '<br><b>Vous avez déjà noté ce film...</b><br>';
+	 			if ($db) 
+	 			{
+	 				$note = $_POST['note'];
+	 				$id_movie = $_GET['id'];
+	 				$id_user = $_SESSION['id_user'];
+
+	 				$rqt_note = 
+	 				'
+					UPDATE movie_notes
+					SET note = '.$note.'
+					WHERE id_user = '.$id_user.'
+	 				';
+
+	 				$result_query_note = mysqli_query($db_handle, $rqt_note);
+
+	 				if ($result_query_note) 
+	 				{
+	 					echo '<br>Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !<br>';
+	 				}
+	 			}
 	 		}
 	 		else
 	 		{
@@ -123,7 +157,7 @@
 
 	 				if ($result_query_note) 
 	 				{
-	 					echo 'Vous avez donné '.$_POST['note'].' à ce flim '.$_SESSION['pseudo'].' !';
+	 					echo 'Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !';
 	 				}
 	 			}
 	 		}

@@ -24,7 +24,7 @@
 	<?php
 		if (isset($_SESSION['pseudo'])) 
 		{
-			echo 'Salut ' .$_SESSION['pseudo']. '<br>';
+			echo '<br>Salut ' .ucwords($_SESSION['pseudo']). '<br>';
 		}
 		
 	?>

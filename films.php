@@ -59,7 +59,7 @@
 				}
 				else
 				{
-					echo '<b>Vous n\'êtes pas connecté(e)...</b>';
+					echo '<br><b>Vous n\'êtes pas connecté(e)...</b><br>';
 					$rqt_movies = 
 					'
 					SELECT * 
@@ -88,7 +88,7 @@
 
 		if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
 		{
-			echo '<br><h2>Bonjour '.$_SESSION['pseudo']. ' !</h2><br>';
+			echo '<br><h2>Bonjour '.ucwords($_SESSION['pseudo']). ' !</h2><br>';
 		}
 	 ?>
 </body>
