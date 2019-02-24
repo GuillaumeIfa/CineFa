@@ -3,15 +3,21 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./SCRIPT/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<title>Acteurs</title>
 </head>
 <body>
 	<h1>Acteurs</h1>
+	<i class="fas fa-theater-masks" style="font-size: 60px;"></i>
+	<br>
+	<br>
 	 <form action="./acteurs.php" method="POST">
 
 		Recherche:<br>
 		<input type="text" name="name">
 		<br>
+		<i class="fas fa-search"></i>
 		<input type="submit" name="submit" value="Rechercher">
 
 	</form>

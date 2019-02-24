@@ -4,10 +4,15 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" type="text/css" href="./SCRIPT/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<title>Films</title>
 </head>
 <body>
 	<h1>Films</h1>
+	<i class="far fa-file-video" style="font-size: 60px;"></i>
+	<br>
+	<br>
 	<form action="./films.php" method="POST">
 
 		Recherche par titre:<br>
@@ -86,10 +91,10 @@
 		echo '<br>';
 		echo '<br><a href="./index.tmp.php">Retour</a><br>';
 
-		if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
-		{
-			echo '<br><h2>Bonjour '.ucwords($_SESSION['pseudo']). ' !</h2><br>';
-		}
+		// if (isset($_SESSION['pseudo']) && isset($_SESSION['password']))
+		// {
+		// 	echo '<br><h2>Bonjour '.ucwords($_SESSION['pseudo']). ' !</h2><br>';
+		// }
 	 ?>
 </body>
 </html>

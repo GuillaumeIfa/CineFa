@@ -37,6 +37,7 @@
 			$result_query_actors = mysqli_query($db_handle, $rqt_actors);
 			$db_field_actors = mysqli_fetch_assoc($result_query_actors);
 
+			echo '<img src="'.$db_field_actors['picture'].' alt="'.$db_field_actors['name'].' style="width:150px;">';
 			echo '<h3>Informations:</h3>';
 			echo '<p>Date de naissance:<br>';
 			echo $db_field_actors['date_of_birth'].'</p>';
@@ -53,7 +54,7 @@
 			}
 		}
 
-		echo '<br><a href="./index.tmp.php">Retour</a>';
+		echo '<br><a href="./acteurs.php">Retour</a>';
 	 ?>
 </body>
 </html>

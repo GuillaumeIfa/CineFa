@@ -4,10 +4,14 @@
 <head>
 	<meta charset="UTF-8">
 	<link rel="stylesheet" href="./SCRIPT/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 	<title>Categories</title>
 </head>
 <body>
 	<h1>Catégories</h1>
+	<i class="fas fa-list-alt" style="font-size:60px;"></i>
+	<br><br>
 	<?php 
 
 		require_once './SCRIPT/configure.php';

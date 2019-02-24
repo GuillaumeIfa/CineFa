@@ -10,7 +10,6 @@ body
 h1
 {
 	font-size: 30px;
-	font-weight: lighter;
 	letter-spacing: 5px;
 	margin: auto;
 	padding: 25px;
@@ -22,6 +21,11 @@ h2
 	font-weight: lighter;
 	margin: auto;
 	padding: 25px;
+}
+
+img
+{
+	box-shadow: 5px 5px;
 }
 
 a

@@ -36,6 +36,7 @@
 			$result_query_directors = mysqli_query($db_handle, $rqt_directors);
 			$db_field_directors = mysqli_fetch_assoc($result_query_directors);
 
+			echo '<img src="'.$db_field_directors['picture'].' alt="'.$db_field_directors['name'].' style="width:150px;">';
 			echo '<h3>Informations:</h3>';
 			echo '<p>Date de naissance<br>';
 			echo $db_field_directors['date_of_birth'].'</p>';
@@ -52,7 +53,7 @@
 			}
 		}
 
-		echo '<br><a href="./index.tmp.php">Retour</a>';
+		echo '<br><a href="./realisateurs.php">Retour</a>';
 	 ?>
 </body>
 </html>

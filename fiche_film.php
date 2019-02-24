@@ -45,6 +45,7 @@
 			$result_query_movies = mysqli_query($db_handle, $rqt_movies);
 			$db_field_movies = mysqli_fetch_assoc($result_query_movies);
 
+			echo '<img src="'.$db_field_movies['poster'].' alt="'.$db_field_movies['title'].' style="width:150px;">';
 			echo '<h3>Informations:</h3>';
 			echo '<p>Date de sortie:<br>';
 			echo $db_field_movies['release_date'].'</p>';
@@ -143,7 +144,7 @@
 
 	 				if ($result_query_note) 
 	 				{
-	 					echo '<script>alert("Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !")';
+	 					echo '<script>alert("Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !")</script>';
 	 				}
 	 			}
 	 		}
@@ -165,5 +166,5 @@
 	 	<input type="submit" name="submit_note" value="Noter">
 	 </form>
 	 <br>
-	 <a href="./index.tmp.php">Retour</a>
+	 <a href="./films.php">Retour</a>
 </html>
