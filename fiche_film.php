@@ -87,20 +87,6 @@
 			echo $db_field_avg['note'].'</p>';
 		}
 	 ?>
-	 <h2>Notez Le film:</h2>
-
-	 <form action="" method="POST">
-	 	<select name="note">
-	 		<option>📼</option>
-		 	<option value="0">0</option>
-		 	<option value="1">1</option>
-		 	<option value="2">2</option>
-		 	<option value="3">3</option>
-		 	<option value="4">4</option>
-		 	<option value="5">5</option>
-	 	</select>
-	 	<input type="submit" name="submit_note" value="Noter">
-	 </form>
 
 	 <?php 
 
@@ -129,7 +115,7 @@
 
 	 				if ($result_query_note) 
 	 				{
-	 					echo '<br>Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !<br>';
+	 					echo '<script>alert("Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !")</script>';
 	 				}
 	 			}
 	 		}
@@ -157,12 +143,27 @@
 
 	 				if ($result_query_note) 
 	 				{
-	 					echo 'Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !';
+	 					echo '<script>alert("Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !")';
 	 				}
 	 			}
 	 		}
 	 	}
-	 	echo '<br><a href="./index.tmp.php">Retour</a>';
 	  ?>
 </body>
+	 <h2>Notez Le film:</h2>
+
+	 <form action="" method="POST">
+	 	<select name="note">
+	 		<option>📼</option>
+		 	<option value="0">0</option>
+		 	<option value="1">1</option>
+		 	<option value="2">2</option>
+		 	<option value="3">3</option>
+		 	<option value="4">4</option>
+		 	<option value="5">5</option>
+	 	</select>
+	 	<input type="submit" name="submit_note" value="Noter">
+	 </form>
+	 <br>
+	 <a href="./index.tmp.php">Retour</a>
 </html>
