@@ -60,10 +60,10 @@
 			while ($db_field = mysqli_fetch_assoc($result_query)) 
 			{
 				echo '<br><a href="fiche_acteur.php?id='.$db_field['id_actor'].'&name='.$db_field['name'].'">'.ucwords($db_field['name']).'</a>';
-			}		
+			}
 		}
 		echo "<br>";
+		echo '<br><a href="./index.tmp.php">Retour</a>';
 	 ?>
-	<?php echo '<br><a href="./index.tmp.php">Retour</a>'; ?>
 </body>
 </html>

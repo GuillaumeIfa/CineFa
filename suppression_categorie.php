@@ -29,7 +29,7 @@
 			header('Location: ./categories.php');
 		}
 	}
- ?>
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>

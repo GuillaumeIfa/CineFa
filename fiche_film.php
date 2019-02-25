@@ -30,17 +30,17 @@
 			$rqt_actors = 
 			'
 			SELECT actors.name, actors.id_actor
-            FROM actors
-            INNER JOIN plays_in ON plays_in.id_actor = actors.id_actor
-            INNER JOIN movies ON movies.id_movie = plays_in.id_movie
-            WHERE movies.id_movie = '.$_GET["id"].';
-            ';
+			FROM actors
+			INNER JOIN plays_in ON plays_in.id_actor = actors.id_actor
+			INNER JOIN movies ON movies.id_movie = plays_in.id_movie
+			WHERE movies.id_movie = '.$_GET["id"].';
+			';
 
-            $rqt_avg = 
-            '
-            SELECT round(AVG(note),1) AS note
-            FROM movie_notes
-            ';
+			$rqt_avg = 
+			'
+			SELECT round(AVG(note),1) AS note
+			FROM movie_notes
+			';
 
 			$result_query_movies = mysqli_query($db_handle, $rqt_movies);
 			$db_field_movies = mysqli_fetch_assoc($result_query_movies);
@@ -95,7 +95,7 @@
 	 	{
 	 		if (!isset($_SESSION['pseudo'])) 
 	 		{
-	 			echo '<br><b>Veuillez vous connecter </b><a href="./connection.php">ICI</a><br>';
+	 			echo '<script>alert("Veuillez vous connecter pour noter le film !")</script>';
 	 		}
 	 		elseif (isset($db_field_note['note'])) 
 	 		{
@@ -117,6 +117,7 @@
 	 				if ($result_query_note) 
 	 				{
 	 					echo '<script>alert("Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !")</script>';
+	 					echo '<script>document.location.href="";</script>';
 	 				}
 	 			}
 	 		}
@@ -138,33 +139,34 @@
 					(
 					"'.$id_movie.'","'.$id_user.'","'.$note.'"
 					);
-	 				';
+					';
 
-	 				$result_query_note = mysqli_query($db_handle, $rqt_note);
+					$result_query_note = mysqli_query($db_handle, $rqt_note);
 
-	 				if ($result_query_note) 
-	 				{
-	 					echo '<script>alert("Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !")</script>';
-	 				}
-	 			}
-	 		}
-	 	}
-	  ?>
+					if ($result_query_note) 
+					{
+						echo '<script>alert("Vous avez donné '.$_POST['note'].' à ce flim '.ucwords($_SESSION['pseudo']).' !")</script>';
+						echo '<script>document.location.href="";</script>';
+					}
+				}
+			}
+		}
+	?>
+<h2>Notez Le film:</h2>
+
+<form action="" method="POST">
+	<select name="note">
+		<option>📼</option>
+		<option value="0">0</option>
+		<option value="1">1</option>
+		<option value="2">2</option>
+		<option value="3">3</option>
+		<option value="4">4</option>
+		<option value="5">5</option>
+	</select>
+	<input type="submit" name="submit_note" value="Noter">
+</form>
+<br>
+<a href="./films.php">Retour</a>
 </body>
-	 <h2>Notez Le film:</h2>
-
-	 <form action="" method="POST">
-	 	<select name="note">
-	 		<option>📼</option>
-		 	<option value="0">0</option>
-		 	<option value="1">1</option>
-		 	<option value="2">2</option>
-		 	<option value="3">3</option>
-		 	<option value="4">4</option>
-		 	<option value="5">5</option>
-	 	</select>
-	 	<input type="submit" name="submit_note" value="Noter">
-	 </form>
-	 <br>
-	 <a href="./films.php">Retour</a>
 </html>

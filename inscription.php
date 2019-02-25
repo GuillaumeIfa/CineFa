@@ -6,7 +6,7 @@
 	<title>Inscription</title>
 </head>
 <body>
-	<section>	
+	<section>
 		<h1>Inscription</h1>
 		<p>
 			Veuillez entrer vos informations:
@@ -27,7 +27,7 @@
 			<input type="password" name="password2" required><br>
 
 			<input type="submit" name="submit1">
-			
+
 		</form>
 	</section>
 
@@ -61,7 +61,6 @@
 
 					$password = sha1(avant.$_POST['password1'].apres);   // Hashage du MDP
 
-				
 					if($db)
 					{
 
@@ -94,7 +93,7 @@
 							}
 						}
 					}
-				}	
+				}
 			}
 		 ?>
 	</section>

@@ -62,7 +62,7 @@
 </head>
 <body>
 	<h1>Créer une Catégorie</h1>
-	
+
 	<form name="form1" action="" method="POST">
 
 		<label for="title">Titre:</label><br>

@@ -13,15 +13,15 @@
 	<i class="fas fa-video" style="font-size:60px;"></i>
 	<br>
 	<br>
-	  <form action="./realisateurs.php" method="POST">
+	<form action="./realisateurs.php" method="POST">
 
-	 	Recherche par nom:<br>
-	 	<input type="text" name="name">
-	 	<br>
-	 	<input type="submit" name="submit" value="Rechercher">
+		Recherche par nom:<br>
+		<input type="text" name="name">
+		<br>
+		<input type="submit" name="submit" value="Rechercher">
 
-	 </form>
-	 <br><span>Liste des réalisateurs:</span><br>
+	</form>
+	<br><span>Liste des réalisateurs:</span><br>
 	<?php
 
 		require_once './SCRIPT/configure.php';

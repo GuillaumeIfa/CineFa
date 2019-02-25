@@ -27,12 +27,12 @@
 			$rqt_movies = 
 			'
 			SELECT *
-            FROM movies
-            INNER JOIN plays_in ON plays_in.id_movie = movies.id_movie
-            INNER JOIN actors ON actors.id_actor = plays_in.id_actor
-            WHERE actors.id_actor = "'.$_GET["id"].'"
-            ORDER BY movies.release_date DESC LIMIT 3;
-            ';
+			FROM movies
+			INNER JOIN plays_in ON plays_in.id_movie = movies.id_movie
+			INNER JOIN actors ON actors.id_actor = plays_in.id_actor
+			WHERE actors.id_actor = "'.$_GET["id"].'"
+			ORDER BY movies.release_date DESC LIMIT 3;
+			';
 
 			$result_query_actors = mysqli_query($db_handle, $rqt_actors);
 			$db_field_actors = mysqli_fetch_assoc($result_query_actors);
