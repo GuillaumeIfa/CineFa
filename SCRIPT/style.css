@@ -1,8 +1,8 @@
 body
 {
-	background-color: snow;
+	background-color: gainsboro;
 	color: black;
-	font-family: monospace;
+	font-family: Arial, Helvetica, sans-serif;
 	font-size: 16px;
 	text-align: center;
 }
@@ -34,11 +34,12 @@ input
 	border: none;
 	border-bottom: 1px solid black;
 	padding: 8px 15px;
+	margin: 8px;
 }
 
 input:focus
 {
-	border: 1px solid #555;
+	border: 1px solid black;
 	border-radius: 5px;
 }
 
@@ -47,7 +48,31 @@ select
 	padding: 10px 15px;
 	border: none;
 	border-radius: 4px;
-	font-family: monospace;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+
+li
+{
+	list-style: none;
+	display: inline-block;
+}
+
+a
+{
+	color: black;
+	padding: 8px;
+}
+
+a:visited
+{
+	color: black;
+}
+
+a:hover
+{
+	color: black;
+	letter-spacing: 1px;
 }
 
 .button
@@ -55,13 +80,13 @@ select
 	background-color: none;
 	border: 1px solid black;
 	border-radius: 5px;
-	padding: 8px 12px;
+	padding: 6px 10px;
 	margin: 10px;
 	text-align: center;
 	text-decoration: none;
 	display: inline-block;
 	font-size: 16px;
-	font-family: monospace;
+	font-family: Arial, Helvetica, sans-serif;
 }
 
 .button:active
@@ -74,18 +99,19 @@ select
 	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
 }
 
-a
+.conteneur
 {
-	color: black;
+	width: 80%;
+	box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+	margin: auto;
+	margin-top: 25px;
+	padding: 55px;
+	background-color: snow;
+	border-radius: 12px;
+	min-height: 400px;
 }
 
-a:visited
+.hidden
 {
-	color: black;
-}
-
-a:hover
-{
-	color: black;
-	letter-spacing: 1px;
+	display: none;
 }
