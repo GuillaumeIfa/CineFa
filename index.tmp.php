@@ -38,9 +38,9 @@
 		}
 	?>
 	<div>
-		<a href="./connection.php"><button>Connection</button></a>
-		<a href="./inscription.php"><button>Inscription</button></a>
-		<a href="./SCRIPT/quit.php"><button>Deconnection</button></a>
+		<a href="./connection.php"><button class="button">Connection</button></a>
+		<a href="./inscription.php"><button class="button">Inscription</button></a>
+		<a href="./SCRIPT/quit.php"><button class="button">Deconnection</button></a>
 	</div>
 </body>
 </html>

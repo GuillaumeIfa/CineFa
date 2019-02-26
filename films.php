@@ -18,13 +18,13 @@
 		Recherche par titre:<br>
 		<input type="text" name="title">
 		<br>
-		<input type="submit" name="submit" value="Rechercher">
+		<input class="button" type="submit" name="submit" value="Rechercher">
 
 	</form>
 	<br><span>Liste des films:</span>
 	<form action="./films.php" method="POST">
 
-		<input type="submit" name="submit_note" value="Afficher uniquement les films que vous avez notés">
+		<input class="button" type="submit" name="submit_note" value="Afficher uniquement les films que vous avez notés">
 
 	</form>
 	<?php

@@ -164,7 +164,7 @@
 		<option value="4">4</option>
 		<option value="5">5</option>
 	</select>
-	<input type="submit" name="submit_note" value="Noter">
+	<input class="button" type="submit" name="submit_note" value="Noter">
 </form>
 <br>
 <a href="./films.php">Retour</a>

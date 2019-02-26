@@ -108,7 +108,7 @@
 	<form action="" name="form1" method="POST">
 		<input type="text" name="title">
 		<br>
-		<input type="submit" name="submit" value="Rechercher">
+		<input class="button" type="submit" name="submit" value="Rechercher">
 		<br>
 	</form>
 
@@ -154,8 +154,8 @@
 		}
 	?>
 		<br><br>
-		<input type="submit" name="submit_movie" value="Ajouter">
-		<input type="submit" name="delete_movie" value="Supprimer">
+		<input class="button" type="submit" name="submit_movie" value="Ajouter">
+		<input class="button" type="submit" name="delete_movie" value="Supprimer">
 
 	</form>
 

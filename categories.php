@@ -50,8 +50,8 @@
 			echo 'Oupss ! Vous n\'êtes pas connecté(e) !';
 		}
 
-		echo '<br><a href="./creation_categorie.php"><button>Créer une nouvelle catégorie</button></a>';
-		echo '<a href="./suppression_categorie.php"><button>Supprimer une catégorie</button></a>';
+		echo '<br><a href="./creation_categorie.php"><button class="button">Créer une nouvelle catégorie</button></a>';
+		echo '<a href="./suppression_categorie.php"><button class="button">Supprimer une catégorie</button></a>';
 
 	 ?>
 	<br><br>

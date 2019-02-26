@@ -70,7 +70,7 @@
 			}
 		?>
 		</select><br><br>
-		<input type="submit" name="submit" value="Supprimer !">
+		<input class="button" type="submit" name="submit" value="Supprimer !">
 	</form>
 
 	<br>

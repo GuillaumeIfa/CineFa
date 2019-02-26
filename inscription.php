@@ -26,7 +26,7 @@
 			<label for="password">Confirmer Mot De Passe:</label><br>
 			<input type="password" name="password2" required><br>
 
-			<input type="submit" name="submit1">
+			<input class="button" type="submit" name="submit1">
 
 		</form>
 	</section>

@@ -18,7 +18,7 @@
 		Recherche par nom:<br>
 		<input type="text" name="name">
 		<br>
-		<input type="submit" name="submit" value="Rechercher">
+		<input class="button" type="submit" name="submit" value="Rechercher">
 
 	</form>
 	<br><span>Liste des réalisateurs:</span><br>

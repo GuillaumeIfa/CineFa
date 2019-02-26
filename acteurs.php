@@ -18,7 +18,7 @@
 		<input type="text" name="name">
 		<br>
 		<i class="fas fa-search"></i>
-		<input type="submit" name="submit" value="Rechercher">
+		<input class="button" type="submit" name="submit" value="Rechercher">
 
 	</form>
 	<br><span>Liste des acteurs:</span>

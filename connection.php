@@ -69,7 +69,7 @@
 			<input type="text" name='pseudo' required><br>
 			<label for="password">Mot De Passe:</label><br>
 			<input type="password" name="password" required><br>
-			<input type="submit" name="submit1">
+			<input class="button" type="submit" name="submit1" value="Valider">
 
 		</form>
 
