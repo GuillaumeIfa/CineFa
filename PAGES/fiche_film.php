@@ -41,6 +41,8 @@
 					'
 					SELECT round(AVG(note),1) AS note
 					FROM movie_notes
+					INNER JOIN movies ON movies.id_movie = movie_notes.id_movie
+					WHERE movies.id_movie = '.$_GET["id"].';
 					';
 
 					$result_query_movies = mysqli_query($db_handle, $rqt_movies);

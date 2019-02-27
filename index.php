@@ -50,9 +50,19 @@
 			?>
 			<br><br>
 			<div>
-				<a href="./PAGES/connection.php"><button class="button">Connection</button></a>
-				<a href="./PAGES/inscription.php"><button class="button">Inscription</button></a>
-				<a href="./SCRIPT/quit.php"><button class="button">Déconnection</button></a>
+				<?php
+					if ( null == isset($_SESSION['pseudo']) )
+					{
+						echo '<a href="./PAGES/connection.php"><button class="button">Connection</button></a>';
+						echo '<a href="./PAGES/inscription.php"><button class="button">Inscription</button></a>';
+					}
+
+				
+					if (isset($_SESSION['pseudo'])) 
+					{
+						echo '<a href="./SCRIPT/quit.php"><button class="button">Déconnection</button></a>';
+					}
+				?>
 			</div>
 		</div>
 	</body>
